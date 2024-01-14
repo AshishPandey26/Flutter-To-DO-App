@@ -25,7 +25,10 @@ class ToDoTile extends StatelessWidget {
                 onChanged: onChanged,
             activeColor: Colors.black,),
             //tasks name
-            Text(taskName),
+
+            Text(taskName,
+            style: TextStyle(decoration:
+            taskCompleted? TextDecoration.lineThrough : TextDecoration.none),)
           ],
         ),
         decoration: BoxDecoration(
