@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_to_do_app/utils/my_button.dart';
+// import 'package:flutter_to_do_app/pages/home_page.dart';
 
 class DialogBox extends StatelessWidget {
   final controller;
-  VoidCallBack onSave;
-  VoidCallBack onCancel;
+  VoidCallback onSave;
+  VoidCallback onCancel;
 
   DialogBox({
     super.key,
-    this.controller,});
+    this.controller,
+    required this.onCancel,
+    required this.onSave});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,8 @@ class DialogBox extends StatelessWidget {
                   MyButton(onPressed: onSave,
                       text: "Save"),
                   const SizedBox(width : 28),
-                  MyButton(onPressed: onCancel, text: "Cancel")
+                  MyButton(onPressed: onCancel,
+                      text: "Cancel")
                 ],
               )
             ],
