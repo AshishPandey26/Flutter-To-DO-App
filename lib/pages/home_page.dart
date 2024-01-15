@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_to_do_app/data/database.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../utils/dialog_box.dart';
@@ -14,8 +16,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // refernece the hive box
-  final _myBox = Hive.openBox('mybox');
+  final _myBox = Hive.box('mybox');
   ToDoDatabase db = ToDoDatabase();
+
+  @override
+  void initState() {
+
+    //if this is the first time evr openign the app then load this defaults
+    if (_myBox.get("TODOLIST") == null){
+      db.createInitialData();
+    }else{
+      //there already exists some data
+      db.loadData();
+    }
+
+    super.initState();
+  }
+
+
   //text controller
   final _controller = TextEditingController();
 
@@ -28,8 +46,8 @@ class _HomePageState extends State<HomePage> {
   void checkBoxChanged(bool? value, int index) {
     setState(() {
       db.toDoList[index][1] = !db.toDoList[index][1];
-
     });
+    db.updateDatabase();
   }
 
   //save new task
@@ -39,6 +57,8 @@ class _HomePageState extends State<HomePage> {
       _controller.clear();
     });
     Navigator.of(context).pop();
+    db.updateDatabase();
+
   }
 
   void createNewTask(){
@@ -56,6 +76,8 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       db.toDoList.removeAt(index);
     });
+    db.updateDatabase();
+
   }
 
   @override
