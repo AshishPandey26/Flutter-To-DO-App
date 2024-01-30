@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_to_do_app/pages/home_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-Future<void> main() async {
-  runApp(const MyApp());
+// import 'package:hive_flutter/adapters.dart';
+// import 'package:hive/hive.dart';
+void main() async {
+
 
   //init the Hive
   await Hive.initFlutter();
 
     //
   var box = await Hive.openBox('mybox');
+
+  runApp(const MyApp());
 }
 /// this is the main function in which we are calling the App
 
