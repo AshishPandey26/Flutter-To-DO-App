@@ -1,16 +1,6 @@
 # flutter_to_do_app
 
-A new Flutter project.
+A new Flutter project. A To-Do app to organize your tasks.
 
-## Getting Started
+It uses local device's database and is modern themed.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
